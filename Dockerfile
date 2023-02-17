@@ -1,7 +1,12 @@
-FROM python:3.9.10-alpine3.14
-WORKDIR /srv
-RUN pip install --upgrade pip
-RUN pip install flask
-COPY . /srv
-ENV FLASK_APP=app
-CMD ["python","app.py"]
+FROM python:3.8-slim
+RUN pip install --no-cache-dir matplotlib pandas
+
+RUN mkdir /code
+COPY . /code
+COPY requirements.txt /code
+WORKDIR /code
+
+
+RUN pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org -r requirements.txt
+EXPOSE 5000
+CMD ["flask", "run", "--host", "0.0.0.0"]

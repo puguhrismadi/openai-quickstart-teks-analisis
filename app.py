@@ -43,3 +43,5 @@ def moderasi():
 
     result = request.args.get("result")
     return render_template("moderasi.html", result=result)
+if __name__ == "__main__":
+    app.run(host='0.0.0.0')
