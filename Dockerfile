@@ -1,4 +1,4 @@
-FROM python:3.8-slim
+FROM python:3.12.0b3-slim-bullseye
 RUN pip install --no-cache-dir matplotlib pandas
 
 RUN mkdir /code
